@@ -2,18 +2,26 @@ import React from 'react';
 
 class SearchBox extends React.Component {
 
-  handleClick(name, event) {
-    console.log(this);
-    console.log(this.refs.searchInput.value);
-    console.log(this.refs._mySecondInput.value);
+  handleChange(event) {
+    this.setState({searchQuery: event.target.value});
+  }
+
+  handleClick() {
+    alert(this.state.searchQuery);
   }
 
   render() {
+    const state = this.state || {};
+
     return (
       <div>
-        <input ref='searchInput' />
-        <input ref={(c) => this._mySecondInput = c} />
-        <button onClick={this.handleClick.bind(this)}>Search</button>
+        <input
+          value={state.searchQuery}
+          onChange={this.handleChange.bind(this)}
+        />
+        <button onClick={this.handleClick.bind(this)}>
+          Search
+        </button>
       </div>
     );
   }
