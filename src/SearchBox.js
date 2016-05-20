@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class SearchBox extends Component {
+class SearchBox extends React.Component {
   render() {
     return (
       <div>
-        <input type='text' />
+        <input />
         <button>Search</button>
       </div>
     );
   }
-};
+}
 
 export default SearchBox;
