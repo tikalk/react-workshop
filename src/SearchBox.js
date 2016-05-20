@@ -4,15 +4,16 @@ class SearchBox extends React.Component {
 
   handleClick(name, event) {
     console.log(this);
-    console.log(event.target);
-    console.log(name);
+    console.log(this.refs.searchInput.value);
+    console.log(this.refs._mySecondInput.value);
   }
 
   render() {
     return (
       <div>
-        <input />
-        <button onClick={this.handleClick.bind(this, 'button1')}>Search</button>
+        <input ref='searchInput' />
+        <input ref={(c) => this._mySecondInput = c} />
+        <button onClick={this.handleClick.bind(this)}>Search</button>
       </div>
     );
   }
