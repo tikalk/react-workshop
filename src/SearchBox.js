@@ -1,11 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
+//
+// const SearchBox = React.createClass({
+//   render: function () {
+//     return (<div>Hello React</div>);
+//   }
+// });
 
-class SearchBox extends Component {
+class SearchBox extends React.Component {
   render() {
-    return (
-      <p>Hello React</p>
-    );
+    return (<div>Hello React</div>);
   }
-};
+}
 
 export default SearchBox;
