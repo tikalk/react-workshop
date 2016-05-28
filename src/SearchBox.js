@@ -15,6 +15,7 @@ class SearchBox extends React.Component {
 
     return (
       <div>
+        <h1>{this.props.requiredString}</h1>
         <input
           value={state.searchQuery}
           onChange={this.handleChange.bind(this)}
@@ -26,5 +27,9 @@ class SearchBox extends React.Component {
     );
   }
 }
+
+SearchBox.propTypes = {
+  requiredString: React.PropTypes.string
+};
 
 export default SearchBox;
