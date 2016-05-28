@@ -1,29 +1,50 @@
 import React from 'react';
+import ResultList from './ResultList';
 
 class SearchBox extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchQuery: '',
+      results: []
+    };
+  }
 
   handleChange(event) {
     this.setState({searchQuery: event.target.value});
   }
 
   handleClick() {
-    alert(this.state.searchQuery);
+    setTimeout(() => {
+      const results = [];
+
+      for (let i = 0; i < 10; i++) {
+        results.push({ id: i, name: 'name ' + i });
+      }
+
+      this.setState({ results });
+    }, 1000);
   }
 
   render() {
-    const state = this.state || {};
+    const { searchQuery, results } = this.state;
 
     return (
       <div>
-        <h1>{this.props.requiredString}</h1>
-        <input
-          value={state.searchQuery}
-          onChange={this.handleChange.bind(this)}
-        />
-        <button onClick={this.handleClick.bind(this)}>
-          Search
-        </button>
+          <div>
+            <h1>{this.props.requiredString}</h1>
+            <input
+              value={searchQuery}
+              onChange={this.handleChange.bind(this)}
+            />
+            <button onClick={this.handleClick.bind(this)}>
+              Search
+            </button>
+          </div>
+          <ResultList results={results}/>
       </div>
+
     );
   }
 }
