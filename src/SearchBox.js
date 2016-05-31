@@ -1,13 +1,11 @@
 import React from 'react';
-import ResultList from './ResultList';
 
 class SearchBox extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      searchQuery: '',
-      results: []
+      searchQuery: ''
     };
   }
 
@@ -15,20 +13,9 @@ class SearchBox extends React.Component {
     this.setState({searchQuery: event.target.value});
   }
 
-  handleClick() {
-    setTimeout(() => {
-      const results = [];
-
-      for (let i = 0; i < 10; i++) {
-        results.push({ id: i, name: 'name ' + i });
-      }
-
-      this.setState({ results });
-    }, 1000);
-  }
-
   render() {
-    const { searchQuery, results } = this.state;
+    const { searchQuery } = this.state;
+    const { doSearch } = this.props;
 
     return (
       <div>
@@ -38,11 +25,10 @@ class SearchBox extends React.Component {
               value={searchQuery}
               onChange={this.handleChange.bind(this)}
             />
-            <button onClick={this.handleClick.bind(this)}>
+            <button onClick={doSearch}>
               Search
             </button>
           </div>
-          <ResultList results={results}/>
       </div>
 
     );
@@ -50,7 +36,8 @@ class SearchBox extends React.Component {
 }
 
 SearchBox.propTypes = {
-  requiredString: React.PropTypes.string
+  requiredString: React.PropTypes.string,
+  doSearch: React.PropTypes.func.isRequired
 };
 
 export default SearchBox;
