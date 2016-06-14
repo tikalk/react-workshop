@@ -13,19 +13,24 @@ class SearchBox extends React.Component {
     this.setState({searchQuery: event.target.value});
   }
 
+  handleDoSeach() {
+    const { doSearch } = this.props;
+    const { searchQuery } = this.state;
+    
+    doSearch(searchQuery);
+  }
+
   render() {
     const { searchQuery } = this.state;
-    const { doSearch } = this.props;
 
     return (
       <div>
           <div>
-            <h1>{this.props.requiredString}</h1>
             <input
               value={searchQuery}
               onChange={this.handleChange.bind(this)}
             />
-            <button onClick={doSearch}>
+            <button onClick={this.handleDoSeach.bind(this)}>
               Search
             </button>
           </div>
@@ -36,7 +41,6 @@ class SearchBox extends React.Component {
 }
 
 SearchBox.propTypes = {
-  requiredString: React.PropTypes.string,
   doSearch: React.PropTypes.func.isRequired
 };
 

@@ -9,7 +9,11 @@ class ResultList extends React.Component {
       <div>
         {
           results.map((r) => {
-            return (<div key={r.id}><a id={r.id} onClick={onResultSelected}>{r.name}</a></div>);
+            return (<div key={r.id}>
+              <a id={r.id} onClick={onResultSelected}>
+                {r.name}
+              </a>
+            </div>);
           })
         }
       </div>
@@ -23,3 +27,4 @@ ResultList.propTypes = {
 };
 
 export default ResultList;
+
